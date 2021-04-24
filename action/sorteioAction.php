@@ -16,5 +16,8 @@ switch($acao){
         echo $data;
         //print json_encode($data, JSON_UNESCAPED_UNICODE); //enviar el array
         //echo json_encode($data);    
-        break;   
+        break;
+    default:
+    	include_once(__DIR__."/../view/sorteioForm.php");
+    	break;
 }

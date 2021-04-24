@@ -16,16 +16,14 @@ class SorteioController
         //print_r($sorteio->getNumeroSorteado());
         $cad_result = implode(',',$resultado);
         $html = "";
-        $html .= "<h1>Resultado de sorteio</h1>";
-        $html .= "<hr>";
-        $html .="<h3>Número sorteado</h3>";
+        $html .="<h4>Número sorteado</h4>";
         $html .= $cad_result;
         $html .= "<hr>";
-        $html .="<h3>Número sorteado ordenado</h3>";
+        $html .="<h4>Número sorteado ordenado</h4>";
         sort($resultado);
         $html .= implode(',',$resultado);
         $html .= "<hr>";
-        $html .="<h3>Acertos por apostador</h3>";
+        $html .="<h4>Acertos por apostador</h4>";
         $html .= $sorteio->getHTMLAcertos();
         return $html; 
     }

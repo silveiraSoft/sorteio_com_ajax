@@ -1,8 +1,5 @@
- 
-
-(function () {
+ (function () {
        'use strict'
-
        // Fetch all the forms we want to apply custom Bootstrap validation styles to
        var forms = document.querySelectorAll('.needs-validation')
 
@@ -19,28 +16,24 @@
            }, false)
          })
      })()
-     
 
 var validarform = function () {
-       'use strict'
+  'use strict'
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  var forms = document.querySelectorAll('.needs-validation')
+  // Loop over them and prevent submission
+  Array.prototype.slice.call(forms)
+   .forEach(function (form) {
+     form.addEventListener('submit', function (event) {
+       if (!form.checkValidity()) {
+         event.preventDefault()
+         event.stopPropagation()
+       }
 
-       // Fetch all the forms we want to apply custom Bootstrap validation styles to
-       var forms = document.querySelectorAll('.needs-validation')
-
-       // Loop over them and prevent submission
-       Array.prototype.slice.call(forms)
-         .forEach(function (form) {
-           form.addEventListener('submit', function (event) {
-             if (!form.checkValidity()) {
-               event.preventDefault()
-               event.stopPropagation()
-             }
-
-             form.classList.add('was-validated')
-           }, false)
-         })
-     }
-
+       form.classList.add('was-validated')
+     }, false)
+   })
+}
 
 function validarData(dt_sorteio){
   var f = new Date();
@@ -64,9 +57,8 @@ function validarData(dt_sorteio){
       $("#data_sorteio").addClass('is-invalid');
       $("#formSorteio").removeClass('was-validated');
       $("#sortear").attr("disabled", true);
-  }
-   //form.classList.add('was-validated') has-validation 
-   validarform();
+  } 
+  validarform();
 }
 
 $(document).ready(function() {
@@ -75,8 +67,6 @@ $(document).ready(function() {
          validarform();
          form = document.getElementById('formSorteio');
          if(!form.checkValidity() || $("#data_sorteio").hasClass("is-invalid")){
-           //return false;
-           //$("#sortear").removeAttr('data-toggle','data-target');
            $("#sortear").removeAttr('data-toggle');
            $("#sortear").removeAttr('data-target');
            $('#exampleModalLong').modal('hide');
@@ -84,15 +74,12 @@ $(document).ready(function() {
            e.stopPropagation();
            return;
          }else{
-              //$("#sortear").removeAttr('data-toggle','data-target');
               
               $("#sortear").attr({
                 'data-toggle': 'modal',
                 'data-target': '#exampleModalLong'
               });
               $("#data_sorteio").removeClass("is-invalid");
-
-              //alert("aqui");
               nome_lot = $.trim($('#nome_lot').val());
               data_sorteio = $.trim($('#data_sorteio').val());
               num_inicial = $.trim($('#num_inicial').val());
@@ -116,19 +103,9 @@ $(document).ready(function() {
                   }
               });
 
-                e.preventDefault();
-                e.stopPropagation();
+              e.preventDefault();
+              e.stopPropagation();
          }
 
-         
-        //form.removeClass("was-validated");
-        //form.trigger("reset");         
-
      });
-     /*
-     $("#formSorteio").submit(function(e){
-       
-       alert("aqui");
-     }); 
-     */
  });
